@@ -1,0 +1,17 @@
+# Generated credentials
+.env
+.env.local
+
+# Persistent Neo4j state
+data/
+logs/
+backups/
+
+# Exported container images
+*.tar
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+*.swp
