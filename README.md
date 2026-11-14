@@ -24,6 +24,20 @@ Persistent data is stored in the `neo4j_data`, `neo4j_logs`, and
 `neo4j_backups` Docker volumes. Mount the Docker data root on EBS, or replace
 these named volumes with EBS bind mounts during EC2 provisioning.
 
+## AWS CloudFormation POC
+
+Upload `storage/neo4j-storage-stack.yaml` from the separate `infra` repository
+to CloudFormation. It creates a
+`c7i-flex.large` EC2 instance, a retained encrypted 50 GiB gp3 data volume mounted at
+Docker's data root, and publicly reachable ports `7474` and `7687`. Supply a
+Neo4j password when creating the stack. The `Neo4jBrowserUrl` stack output opens
+the graph UI; log in as `neo4j` with the supplied password.
+
+The template defaults `PublicIngressCidr` to `0.0.0.0/0` only for the short-lived
+demo. Prefer your current public IP with `/32`. Neo4j HTTP and Bolt traffic are
+unencrypted in this POC, so do not reuse the password or leave the instance
+online unnecessarily.
+
 Useful commands:
 
 ```bash

@@ -34,6 +34,7 @@ if [[ ! -f .env ]]; then
     echo "NEO4J_IMAGE=$IMAGE_NAME"
     echo "NEO4J_PASSWORD=$secret"
     echo "NEO4J_BIND_ADDRESS=${NEO4J_BIND_ADDRESS:-127.0.0.1}"
+    echo "NEO4J_ADVERTISED_ADDRESS=${NEO4J_ADVERTISED_ADDRESS:-localhost}"
     echo "NEO4J_HTTP_PORT=7474"
     echo "NEO4J_BOLT_PORT=7687"
     echo "NEO4J_HEAP_INITIAL=512m"
